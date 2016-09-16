@@ -2,5 +2,5 @@
 
 Repii tekstit määritellystä kansiosta ja laittaa ne näytölle heiluu coolisti. Näytönsäästäjä?
 
-**Dokumentaatio**
+**Dokumentaatio:**
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
