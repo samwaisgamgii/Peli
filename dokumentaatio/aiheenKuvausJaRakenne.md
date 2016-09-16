@@ -13,6 +13,10 @@ kulkuun lennosta? Tarkoitus olisi myös luoda käyttöliittymä ohjelman configuroin
 	*Mahdollisuus vaikuttaa ohjelman kulkuun?
 	*Jotain muuta kivaa?
 	
+**Tässä määrittelyvaiheen UML kaavio**
+
+![pöö](AlkuUML2.png)
+	
 
 	
 
