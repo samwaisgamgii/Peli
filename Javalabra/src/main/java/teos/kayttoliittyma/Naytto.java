@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kayttoliittyma;
+package teos.kayttoliittyma;
 
 /**
  *
  * @author Sami
  */
-public class GrafiikanTuotto extends Naytto  {
-    
-    public GrafiikanTuotto(){
-        
+public class Naytto {
+
+    public Naytto() {
     }
+    
     
 }
