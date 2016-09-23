@@ -5,7 +5,11 @@
  */
 package teos.ohjaaja;
 
+import teos.kayttoliittyma.GrafiikanTuotto;
+import teos.kayttoliittyma.Naytto;
 import teos.logiikka.TiedostonLuku;
+import java.awt.Color;
+import teos.logiikka.VirheetJaSiivous;
 
 /**
  *
@@ -15,34 +19,40 @@ public class Ohjaus {
 
     private TiedostonLuku lue;
     private String virhe;
+    private Naytto naytto;
+    private GrafiikanTuotto draw;
+    private VirheetJaSiivous vs;
 
-    public Ohjaus(TiedostonLuku lue) {
-        this.lue = lue;
+    public Ohjaus() {
+
+    }
+
+    public Ohjaus(Naytto n, TiedostonLuku l, VirheetJaSiivous vs, GrafiikanTuotto g) {
+        this.naytto = n;
+        this.lue = l;
+        this.vs = vs;
+        this.draw = g;
+
     }
 
     public void aloitus(String polku, String tyyppi) {
+        naytto.setOhjaus(this);
+        naytto.luoIkkuna(Color.BLACK);
         String data = lue.haeTiedosto(polku, tyyppi);
-        System.out.println(data);
         if (data.contains("virhe")) {
             virhe = "tiedän: " + data;
-            // viesti käyttöliittymälle
+            draw.ilmoitaVirhe(virhe);
         }
+        draw.piirraTeksti(data);
+
     }
 
-    public TiedostonLuku getLue() {
-        return lue;
-    }
-
-    public void setLue(TiedostonLuku lue) {
-        this.lue = lue;
+    public void escPainettu() {
+        vs.suljeOhjelma();
     }
 
     public String getVirhe() {
         return virhe;
-    }
-
-    public void setVirhe(String virhe) {
-        this.virhe = virhe;
     }
 
 }

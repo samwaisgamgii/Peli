@@ -5,14 +5,26 @@
  */
 package teos.kayttoliittyma;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sami
  */
-public class GrafiikanTuotto extends Naytto  {
-    
-    public GrafiikanTuotto(){
-        
+public class GrafiikanTuotto extends Naytto {
+
+    public GrafiikanTuotto() {
+
     }
-    
+
+    public String piirraTeksti(String data) {
+        return data;
+    }
+
+    public void ilmoitaVirhe(String virhe) {
+        JOptionPane.showMessageDialog(ikkuna, virhe,
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
 }

@@ -25,12 +25,12 @@ public class TiedostonLuku {
         String data = "";
         Scanner lue = null;
         File kansio = new File(polku);
+        System.out.println(polku);
         if (!kansio.exists()) {
             return "virhe : polkua ei ole!";
         }
         File[] tiedostolista = kansio.listFiles();
         for (int i = 0; i < tiedostolista.length; i++) {
-            File file = tiedostolista[i];
             try {
                 lue = new Scanner(tiedostolista[i]);
                 while (lue.hasNextLine()) {
