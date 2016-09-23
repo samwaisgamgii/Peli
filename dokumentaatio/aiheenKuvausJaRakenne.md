@@ -16,6 +16,10 @@ kulkuun lennosta? Tarkoitus olisi myös luoda käyttöliittymä ohjelman configuroin
 **Tässä määrittelyvaiheen UML kaavio**
 
 ![pöö](AlkuUML2.png)
+
+**Tässä laajempi UML kaavio**
+
+![puu](UML3Dead.png)
 	
 
 	
