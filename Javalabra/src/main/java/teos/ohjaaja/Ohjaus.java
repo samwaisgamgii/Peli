@@ -8,7 +8,7 @@ package teos.ohjaaja;
 import teos.kayttoliittyma.Naytto;
 import teos.logiikka.TiedostonLuku;
 import java.awt.Color;
-import javax.swing.JPanel;
+
 import teos.kayttoliittyma.Piirtopaneeli;
 import teos.logiikka.VirheetJaSiivous;
 
@@ -47,8 +47,6 @@ public class Ohjaus {
 
     }
 
-  
-
     public void escPainettu() {
         vs.suljeOhjelma();
     }
@@ -58,7 +56,7 @@ public class Ohjaus {
     }
 
     public void setJPanel(Piirtopaneeli p) {
-        this.p =  p;
+        this.p = p;
     }
 
 }

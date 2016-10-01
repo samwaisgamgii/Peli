@@ -44,7 +44,6 @@ public class Naytto implements KeyListener {
         this.ohjaus = ohjaus;
     }
 
-
     public void ilmoitaVirhe(String virhe) {
         JOptionPane.showMessageDialog(ikkuna, virhe,
                 "Error",
@@ -82,8 +81,5 @@ public class Naytto implements KeyListener {
     public void setTaulu(JPanel taulu) {
         this.taulu = taulu;
     }
-
-   
-    
 
 }

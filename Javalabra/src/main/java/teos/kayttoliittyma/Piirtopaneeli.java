@@ -64,7 +64,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             }
             if (m < lista.size() - 3) {
                 m++;
-            }else{
+            } else {
                 m = 0;
             }
 
