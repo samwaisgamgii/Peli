@@ -6,7 +6,6 @@
 package teos.logiikka;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -14,9 +13,9 @@ import java.util.Scanner;
  * @author Sami
  */
 public class TiedostonLuku {
-
+    
     public TiedostonLuku() {
-
+        
     }
 
     // hakee kaikki tietyn tyyppiset tiedostot polusta
@@ -31,19 +30,21 @@ public class TiedostonLuku {
         }
         File[] tiedostolista = kansio.listFiles();
         for (int i = 0; i < tiedostolista.length; i++) {
-            try {
-                lue = new Scanner(tiedostolista[i]);
-                while (lue.hasNextLine()) {
-                    data = data + lue.nextLine() + "\n";
-
+            if (tiedostolista[i].exists() && tiedostolista[i].getName().endsWith(tyyppi)) {
+                try {
+                    lue = new Scanner(tiedostolista[i]);
+                    while (lue.hasNextLine()) {
+                        data = data + lue.nextLine() + "\n";
+                        
+                    }
+                } catch (Exception e) {
+                    return "virhe : tiedostoa ei voitu lukea" + e;
                 }
-            } catch (FileNotFoundException e) {
-                return "virhe : tiedostoa ei voitu lukea";
-            }
-
+                
+            } 
         }
         lue.close();
         return data;
     }
-
+    
 }

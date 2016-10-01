@@ -5,6 +5,7 @@
  */
 package teos.kayttoliittyma;
 
+import java.awt.EventQueue;
 import teos.logiikka.TiedostonLuku;
 import teos.logiikka.VirheetJaSiivous;
 import teos.ohjaaja.Ohjaus;
@@ -16,12 +17,17 @@ import teos.ohjaaja.Ohjaus;
 public class Aja {
 
     public static void main(String[] args) {
-        TiedostonLuku lue = new TiedostonLuku();
-        GrafiikanTuotto draw = new GrafiikanTuotto();
-        VirheetJaSiivous vs = new VirheetJaSiivous();
-        Naytto n = new Naytto();
-        Ohjaus ohjaus = new Ohjaus(n, lue, vs, draw);
-        ohjaus.aloitus("C:\\Users\\Sami\\Documents\\GitHub\\Peli\\Javalabra\\src\\main\\java\\teos\\kayttoliittyma", ".java");
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                TiedostonLuku lue = new TiedostonLuku();
+                VirheetJaSiivous vs = new VirheetJaSiivous();
+                Naytto n = new Naytto();
+                Ohjaus ohjaus = new Ohjaus(n, lue, vs);
+                ohjaus.aloitus("C:\\Users\\Sami\\Documents\\GitHub\\Peli", ".txt");
+
+            }
+        });
 
     }
 
