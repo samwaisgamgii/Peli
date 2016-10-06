@@ -35,17 +35,20 @@ public class Ohjaus {
 
     }
 
-    public void aloitus(String polku, String tyyppi) {
+    public void aloitus() {
         naytto.setOhjaus(this);
         naytto.luoIkkuna(Color.BLACK);
-        String data = lue.haeTiedosto(polku, tyyppi);
-        if (data.contains("virhe")) {
+        lueTarkistaPiirra();
+    }
+    public void lueTarkistaPiirra(){
+        String data = lue.haeTiedosto();
+        if (data.startsWith("virhe")) {
             virhe = "tiedän: " + data;
             naytto.ilmoitaVirhe(virhe);
         }
         p.piirraTeksti(data);
-
     }
+  
 
     public void escPainettu() {
         vs.suljeOhjelma();

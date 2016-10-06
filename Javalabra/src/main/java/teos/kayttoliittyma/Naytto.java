@@ -48,6 +48,8 @@ public class Naytto implements KeyListener {
         JOptionPane.showMessageDialog(ikkuna, virhe,
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
+        ohjaus.lueTarkistaPiirra();
+        
     }
 
     @Override

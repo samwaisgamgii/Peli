@@ -17,17 +17,14 @@ import teos.ohjaaja.Ohjaus;
 public class Aja {
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
+       
                 TiedostonLuku lue = new TiedostonLuku();
                 VirheetJaSiivous vs = new VirheetJaSiivous();
                 Naytto n = new Naytto();
                 Ohjaus ohjaus = new Ohjaus(n, lue, vs);
-                ohjaus.aloitus("C:\\Users\\Sami\\Documents\\GitHub\\Peli", ".txt");
+                ohjaus.aloitus();
 
-            }
-        });
+       
 
     }
 
