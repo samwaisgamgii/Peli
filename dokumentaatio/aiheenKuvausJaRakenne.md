@@ -19,11 +19,13 @@ kulkuun lennosta? Tarkoitus olisi myös luoda käyttöliittymä ohjelman configuroin
 ![uml](UML5.png)
 
 
-**Tässä sekvenssi kaavio datan esittämisen käyttötapauksesta**
+**Sekvenssikaavio datan hakemisesta ja esittämisestä:**
+
 ![sekvenssi2](Sekvenssi.png)
 
 
-**Tässä sekvenssikaavio virheenIlmoitus käyttötapauksesta**
+**Sekvenssikaavio virheenIlmoitus käyttötapauksesta:**
+
 ![sekvenssi1](Sekvenssi5.png)
 
 
