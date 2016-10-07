@@ -23,19 +23,25 @@ import javax.swing.Timer;
 public class Piirtopaneeli extends JPanel implements ActionListener {
 
     private JFrame j;
-    private final int DELAY = 3;
+    private final int DELAY = 1;
     private String data;
     private Naytto n;
     private Timer time;
+    private boolean matrix = true, peli = false;
     private ArrayList lista = new ArrayList();
     int m = 0;
-    private int w, h, valmis = 0, monesX = 10, y = 20;
+    private int x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
     private char dataC = ' ';
 
     public Piirtopaneeli() {
 
     }
 
+    /**
+     * Ajastaa
+     *
+     *
+     */
     public Piirtopaneeli(JFrame jf) {
         j = jf;
         time = new Timer(DELAY, this);
@@ -50,17 +56,27 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * hoitaa kahden moden piirtämisen
+     *
+     * @param g Käyttäjän antama syöte
+     *
+     *
+     */
     public void piirtele(Graphics g) {
 
-        if (data != null) {
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Color.GREEN);
+        Graphics2D g2d = (Graphics2D) g;
 
+        if (data != null && matrix == true) {
+            g2d.setColor(Color.GREEN);
             for (int i = 0; i <= m; i = i + 3) {
                 String d = (String) lista.get(i);
-                int x = (int) lista.get(i + 1);
+                int xs = (int) lista.get(i + 1);
                 int ys = (int) lista.get(i + 2);
-                g2d.drawString(d, x, ys);
+                g2d.drawString(d, xs, ys);
+                if (xs == x && ys == y) {
+                    System.exit(0);
+                }
             }
             if (m < lista.size() - 3) {
                 m++;
@@ -69,20 +85,69 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             }
 
         }
+        if (peli == true) {
+            g2d.setColor(Color.RED);
+            g2d.fillRect(x, y, 10, 10);
+            g2d.setColor(Color.GREEN);
+            for (int i = 0; i <= lista.size() - 3; i = i + 3) {
+                String d = (String) lista.get(i);
+                int xs = (int) lista.get(i + 1);
+                int ys = (int) lista.get(i + 2);
+                g2d.drawString(d, xs, ys);
+
+            }
+
+        }
+    }
+
+    public void peli() {
+        matrix = false;
+        peli = true;
+    }
+
+    /**
+     * Liikuttaa neliötä joka seikkailele sokkelossa
+     *
+     * @param t Käyttäjän antama syöte
+     *
+     *
+     */
+    public void liiku(char t) {
+        if (t == 't') {
+            x = x - 10;
+        }
+        if (t == 'e') {
+            x = x + 10;
+        }
+        if (t == 'y') {
+            y = y - 10;
+        }
+        if (t == 'a') {
+            y = y + 10;
+        }
 
     }
 
+    /**
+     * laittaa datan arraylistaan
+     *
+     * @param data Käyttäjän antama syöte
+     *
+     *
+     */
     public void piirraTeksti(String data) {
         this.data = data;
         w = j.getWidth();
         h = j.getHeight();
+        x = w / 2;
+        y = h / 2;
         for (int i = 0; i < data.length(); i++) {
             if (monesX >= w - 30) {
                 monesX = 10;
-                y = y + 20;
+                monesY = monesY + 20;
             }
-            if (y >= h - 20) {
-                y = 20;
+            if (monesY >= h - 20) {
+                monesY = 20;
             }
 
             dataC = data.charAt(i);
@@ -90,9 +155,13 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
             lista.add(String.valueOf(dataC));
             lista.add(monesX);
-            lista.add(y);
+            lista.add(monesY);
         }
 
+    }
+
+    public void setNaytto(Naytto n) {
+        this.n = n;
     }
 
     @Override

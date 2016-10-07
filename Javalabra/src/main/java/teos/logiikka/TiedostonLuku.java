@@ -10,7 +10,6 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
-
 /**
  *
  * @author Sami
@@ -25,8 +24,11 @@ public class TiedostonLuku {
     public TiedostonLuku() {
 
     }
-    
-    // luo guin polun määrittelemiseen
+
+    /**
+     * luo guin polun määrittelemiseen
+     *
+     */
     private void polkuGui() {
         JButton avaa = new JButton();
 
@@ -41,8 +43,11 @@ public class TiedostonLuku {
         tyyppi = ".txt";
     }
 
-    // hakee kaikki tietyn tyyppiset tiedostot polusta
-    // lukee ne kaikki yhteen String tiedostoon
+    /**
+     * hakee kaikki tietyn tyyppiset tiedostot polusta lukee ne kaikki yhteen
+     * String tiedostoon
+     *
+     */
     public String haeTiedosto() {
         polkuGui();
         File kansio = new File(polku);
@@ -55,7 +60,11 @@ public class TiedostonLuku {
 
         return data;
     }
-    // käy tiedostonlistan läpi ja lukee tiedot String
+
+    /**
+     * käy tiedostonlistan läpi ja lukee tiedot String
+     *
+     */
     public String lue(File[] tiedostolista, String tyyppi) {
 
         data = "";

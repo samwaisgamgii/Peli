@@ -5,7 +5,6 @@
  */
 package teos.kayttoliittyma;
 
-import java.awt.EventQueue;
 import teos.logiikka.TiedostonLuku;
 import teos.logiikka.VirheetJaSiivous;
 import teos.ohjaaja.Ohjaus;
@@ -17,14 +16,12 @@ import teos.ohjaaja.Ohjaus;
 public class Aja {
 
     public static void main(String[] args) {
-       
-                TiedostonLuku lue = new TiedostonLuku();
-                VirheetJaSiivous vs = new VirheetJaSiivous();
-                Naytto n = new Naytto();
-                Ohjaus ohjaus = new Ohjaus(n, lue, vs);
-                ohjaus.aloitus();
 
-       
+        TiedostonLuku lue = new TiedostonLuku();
+        VirheetJaSiivous vs = new VirheetJaSiivous();
+        Naytto n = new Naytto();
+        Ohjaus ohjaus = new Ohjaus(n, lue, vs);
+        ohjaus.aloitus();
 
     }
 

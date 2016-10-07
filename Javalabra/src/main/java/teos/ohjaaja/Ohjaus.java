@@ -10,6 +10,7 @@ import teos.logiikka.TiedostonLuku;
 import java.awt.Color;
 
 import teos.kayttoliittyma.Piirtopaneeli;
+import teos.logiikka.Musiikki;
 import teos.logiikka.VirheetJaSiivous;
 
 /**
@@ -40,7 +41,18 @@ public class Ohjaus {
         naytto.luoIkkuna(Color.BLACK);
         lueTarkistaPiirra();
     }
-    public void lueTarkistaPiirra(){
+
+    public void musiikki() {
+        Musiikki musa = new Musiikki();
+
+    }
+
+    /**
+     * lukee, tarkistaa ja delegoi piirtämisen
+     *
+     *
+     */
+    public void lueTarkistaPiirra() {
         String data = lue.haeTiedosto();
         if (data.startsWith("virhe")) {
             virhe = "tiedän: " + data;
@@ -48,10 +60,25 @@ public class Ohjaus {
         }
         p.piirraTeksti(data);
     }
-  
 
+    /**
+     * välittää tiedon ohjelman sulusta
+     *
+     *
+     */
     public void escPainettu() {
         vs.suljeOhjelma();
+    }
+
+    public void peli() {
+        p.peli();
+    }
+
+    /**
+     * valittaa liikkumis käskyn
+     */
+    public void liikuta(char i) {
+        p.liiku(i);
     }
 
     public String getVirhe() {
