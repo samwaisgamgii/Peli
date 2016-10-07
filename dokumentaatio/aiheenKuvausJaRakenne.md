@@ -17,7 +17,15 @@ kulkuun lennosta? Tarkoitus olisi myös luoda käyttöliittymä ohjelman configuroin
 **Tässä 5 vaiheen UML kaavio**
 
 ![uml](UML5.png)
-	
+
+
+**Tässä sekvenssi kaavio datan esittämisen käyttötapauksesta**
+![sekvenssi2](Sekvenssi.png)
+
+
+**Tässä sekvenssikaavio virheenIlmoitus käyttötapauksesta**
+![sekvenssi1](Sekvenssi5.png)
+
 
 	
 
