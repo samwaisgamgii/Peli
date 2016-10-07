@@ -13,17 +13,10 @@ kulkuun lennosta? Tarkoitus olisi myös luoda käyttöliittymä ohjelman configuroin
 	*Mahdollisuus vaikuttaa ohjelman kulkuun?
 	*Jotain muuta kivaa?
 	
-**Tässä määrittelyvaiheen UML kaavio**
+	
+**Tässä 5 vaiheen UML kaavio**
 
-![pöö](AlkuUML2.png)
-
-**Tässä laajempi UML kaavio**
-
-![puu](UML3Dead.png)
-
-**Tässä muokattu UML kaavio**
-
-![uml](UML4.png)
+![uml](UML5.png)
 	
 
 	

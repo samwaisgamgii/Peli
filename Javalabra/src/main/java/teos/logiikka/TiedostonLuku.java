@@ -37,7 +37,7 @@ public class TiedostonLuku {
         fc.setDialogTitle("Kerro missä tiedostot ovat");
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         if (fc.showOpenDialog(avaa) == JFileChooser.APPROVE_OPTION) {
-            //
+            System.out.println("apua");
         }
         polku = fc.getSelectedFile().getAbsolutePath();
         tyyppi = ".txt";

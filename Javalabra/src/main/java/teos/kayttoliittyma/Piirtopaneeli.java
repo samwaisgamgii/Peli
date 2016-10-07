@@ -23,7 +23,7 @@ import javax.swing.Timer;
 public class Piirtopaneeli extends JPanel implements ActionListener {
 
     private JFrame j;
-    private final int DELAY = 1;
+    private  int delay = 1;
     private String data;
     private Naytto n;
     private Timer time;
@@ -44,7 +44,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
      */
     public Piirtopaneeli(JFrame jf) {
         j = jf;
-        time = new Timer(DELAY, this);
+        time = new Timer(delay, this);
         time.start();
 
     }
