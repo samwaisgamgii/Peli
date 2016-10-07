@@ -7,5 +7,5 @@ Repii datan määritellystä kansiosta ja laittaa sen näytölle heiluu coolisti
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
 
-[linkki Checkstyle](https://htmlpreview.github.io/?https://github.com/samwaisgamgii/Peli/blob/master/dokumentaatio/Checkstyle3/checkstyle.html)
+[linkki Checkstyle](https://htmlpreview.github.io/?https://github.com/samwaisgamgii/Peli/blob/master/dokumentaatio/Checkstyle/checkstyle.html)
 
