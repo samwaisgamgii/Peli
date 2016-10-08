@@ -69,7 +69,7 @@ public class TiedostonLuku {
 
         data = "";
         for (int i = 0; i < tiedostolista.length; i++) {
-            if (tiedostolista[i].getName().endsWith(tyyppi)) {
+            if (tiedostolista[i].getName().endsWith(".txt") || tiedostolista[i].getName().endsWith(".java")) {
                 try {
                     lue = new Scanner(tiedostolista[i]);
                     while (lue.hasNextLine()) {

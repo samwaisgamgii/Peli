@@ -30,7 +30,8 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     private boolean matrix = true, peli = false;
     private ArrayList lista = new ArrayList();
     int m = 0;
-    private int x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
+    private int x,y, w, h, valmis = 0, monesX = 10, monesY = 20;
+   
     private char dataC = ' ';
 
     public Piirtopaneeli() {
@@ -53,8 +54,10 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         piirtele(g);
+        
 
     }
+
 
     /**
      * hoitaa kahden moden piirtämisen
@@ -86,17 +89,25 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
         }
         if (peli == true) {
+            delay = 400;
+            time.setDelay(delay);
             g2d.setColor(Color.RED);
             g2d.fillRect(x, y, 10, 10);
             g2d.setColor(Color.GREEN);
-            for (int i = 0; i <= lista.size() - 3; i = i + 3) {
-                String d = (String) lista.get(i);
-                int xs = (int) lista.get(i + 1);
-                int ys = (int) lista.get(i + 2);
-                g2d.drawString(d, xs, ys);
+            for (int i = 0; i < data.length()/2; i++) {
+                if (monesX >= w - 30) {
+                    monesX = 10;
+                    monesY = monesY + 5;
+                }
+                if (monesY >= h - 20) {
+                    monesY = 20;
+                }               
+                
+                dataC = data.charAt(i);
+                monesX = monesX + 3;
+                g2d.drawString(String.valueOf(dataC), monesX, monesY);
 
             }
-
         }
     }
 
@@ -139,8 +150,9 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         this.data = data;
         w = j.getWidth();
         h = j.getHeight();
+        double h2 = 1.3;
         x = w / 2;
-        y = h / 2;
+        y = (h / 1)-20;
         for (int i = 0; i < data.length(); i++) {
             if (monesX >= w - 30) {
                 monesX = 10;
