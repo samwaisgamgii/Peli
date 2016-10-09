@@ -70,15 +70,15 @@ public class Ohjaus {
         vs.suljeOhjelma();
     }
 
-    public void peli() {
-        p.peli();
+    public void sinM(int i) {
+        p.sinM(i);
     }
 
     /**
      * valittaa liikkumis käskyn
      */
     public void liikuta(char i) {
-        p.liiku(i);
+        
     }
 
     public String getVirhe() {

@@ -89,9 +89,17 @@ public class Naytto implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             ohjaus.liikuta('t');
         }
-        if (e.getKeyCode() == KeyEvent.VK_P) {
-            ohjaus.musiikki();
-            ohjaus.peli();
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+           
+            ohjaus.sinM(1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_C) {
+            
+            ohjaus.sinM(2);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_V) {
+            
+            ohjaus.sinM(3);
         }
 
     }
