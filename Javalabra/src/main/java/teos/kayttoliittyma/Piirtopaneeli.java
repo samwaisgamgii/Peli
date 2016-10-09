@@ -30,13 +30,13 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     private String data;
     private Naytto n;
     private boolean eka = true;
-    private int red,green,blue;
+    private int red, green, blue;
     private Timer time;
-    private boolean cC=false, cSin = false, matrix = true, sin = false;
+    private boolean cC = false, cSin = false, matrix = true, sin = false;
     private ArrayList lista = new ArrayList();
     private ArrayList listaSin = new ArrayList();
     int m = 0;
-    private int t = 0,redS,blueS,x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
+    private int t = 0, redS, blueS, x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
 
     private char dataS = ' ', dataC = ' ';
 
@@ -77,39 +77,40 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
         }
         if (sin == true) {
-            piirraSinAalto(g,1);
+            piirraSinAalto(g, 1);
 
         }
         if (cSin == true) {
-            piirraSinAalto(g,2);
+            piirraSinAalto(g, 2);
 
         }
         if (cC == true) {
-            piirraSinAalto(g,3);
+            piirraSinAalto(g, 3);
 
         }
-        
+
     }
 
     public void piirraSinAalto(Graphics g, int s) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
         sinAalto(s);
-        
+
         if (eka == true) {
-            lisaaSinArvotListaan();            
+            lisaaSinArvotListaan();
         }
         for (int i = 0; i <= t; i = i + 3) {
             g2d.drawString((String) listaSin.get(i), (int) listaSin.get(i + 1), (int) listaSin.get(i + 2));
         }
         lisaaJaReplay("t");
-        
+
     }
-    public void lisaaSinArvotListaan(){           
-            dataS = data.charAt(t);
-            listaSin.add(String.valueOf(dataS));
-            listaSin.add(redS);
-            listaSin.add(blueS);
+
+    public void lisaaSinArvotListaan() {
+        dataS = data.charAt(t);
+        listaSin.add(String.valueOf(dataS));
+        listaSin.add(redS);
+        listaSin.add(blueS);
     }
 
     public void lisaaJaReplay(String tyyppi) {
@@ -120,7 +121,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
                 t = 0;
                 eka = false;
             }
-            
+
         }
         if (tyyppi.equals("m")) {
             if (m < lista.size() - 3) {
@@ -128,11 +129,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             } else {
                 m = 0;
             }
-            
+
         }
-        
+
     }
-    
+
     public void sinAalto(int i) {
         if (i == 1) {
             double aika = System.currentTimeMillis();
@@ -151,17 +152,17 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         }
 
     }
-    
+
     public Color variAnimaatio() {
         double aika = System.currentTimeMillis();
         red = (int) ((2 + sin(aika * 0.001)) * 64);
         green = (int) ((2 + cos(aika * 0.002)) * 64);
         blue = (int) ((2 + sin(aika * 0.003)) * 64);
         Color uusi = new Color(red, green, blue);
-        
+
         return uusi;
     }
-    
+
     public void piirraGradualiisesti(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
@@ -171,18 +172,18 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         }
         lisaaJaReplay("m");
     }
-    
+
     public void sinM(int i) {
-        if (i == 1) {  
+        if (i == 1) {
             listaSin.clear();
             t = 0;
             eka = true;
             cSin = false;
             cC = false;
             matrix = false;
-            sin = true;         
+            sin = true;
         }
-        if (i == 2) {   
+        if (i == 2) {
             listaSin.clear();
             t = 0;
             eka = true;
@@ -191,7 +192,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             sin = false;
             cSin = true;
         }
-        if (i == 3) {   
+        if (i == 3) {
             listaSin.clear();
             t = 0;
             eka = true;
@@ -224,9 +225,9 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         x = w / 2;
         y = (h / 1) - 20;
         lisaaDataListaan(data);
-        
+
     }
-    
+
     public void lisaaDataListaan(String data) {
         for (int i = 0; i < data.length(); i++) {
             if (monesX >= w - 30) {
@@ -236,24 +237,24 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             if (monesY >= h - 20) {
                 monesY = 20;
             }
-            
+
             dataC = data.charAt(i);
             monesX = monesX + 10;
-            
+
             lista.add(String.valueOf(dataC));
             lista.add(monesX);
             lista.add(monesY);
         }
-        
+
     }
-    
+
     public void setNaytto(Naytto n) {
         this.n = n;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         repaint();
     }
-    
+
 }
