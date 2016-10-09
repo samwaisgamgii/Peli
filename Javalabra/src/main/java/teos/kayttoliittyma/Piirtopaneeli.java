@@ -26,16 +26,16 @@ import javax.swing.Timer;
 public class Piirtopaneeli extends JPanel implements ActionListener {
 
     private JFrame j;
-    private int delay = 3;
+    private int delay = 10;
     private String data;
     private Naytto n;
     private boolean eka = true;
     private int red, green, blue;
     private Timer time;
-    private boolean cC = false, cSin = false, matrix = true, sin = false;
+    private boolean rajahdus = false, cC = false, cSin = false, matrix = true, sin = false;
     private ArrayList lista = new ArrayList();
     private ArrayList listaSin = new ArrayList();
-    int m = 0;
+    private int m = 0;
     private int t = 0, redS, blueS, x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
 
     private char dataS = ' ', dataC = ' ';
@@ -88,7 +88,22 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             piirraSinAalto(g, 3);
 
         }
+        if (rajahdus == true) {
+            rajahdus(g);
+        }
 
+    }
+
+    public void rajahdus(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(variAnimaatio());
+        for (int i = 0; i < data.length(); i++) {
+            char datar = data.charAt(i);
+            int xr = (int) (Math.random() * w);
+            int yr = (int) (Math.random() * h);
+            g2d.drawString(String.valueOf(datar), xr, yr);
+
+        }
     }
 
     public void piirraSinAalto(Graphics g, int s) {
@@ -146,6 +161,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             blueS = (int) ((1 + cos(aika * 0.003)) * h / 2);
         }
         if (i == 2) {
+
             double aika = System.currentTimeMillis();
             redS = (int) ((1 + cos(aika * 0.001)) * w / 2);
             blueS = (int) ((1 + sin(aika * 0.003)) * h / 2);
@@ -178,6 +194,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             listaSin.clear();
             t = 0;
             eka = true;
+            rajahdus = false;
             cSin = false;
             cC = false;
             matrix = false;
@@ -187,6 +204,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             listaSin.clear();
             t = 0;
             eka = true;
+            rajahdus = false;
             matrix = false;
             cC = false;
             sin = false;
@@ -196,28 +214,36 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             listaSin.clear();
             t = 0;
             eka = true;
+            rajahdus = false;
             matrix = false;
             sin = false;
             cSin = false;
             cC = true;
         }
+        if (i == 4) {
+            listaSin.clear();
+            t = 0;
+            eka = true;
+            matrix = false;
+            sin = false;
+            cSin = false;
+            cC = false;
+            rajahdus = true;
+        }
+        if (i == 5) {
+            listaSin.clear();
+            t = 0;
+            eka = true;
+            sin = false;
+            cSin = false;
+            cC = false;
+            rajahdus = false;
+            matrix = true;
+        }
 
     }
 
-    /**
-     * Liikuttaa neliötä joka seikkailele sokkelossa
-     *
-     * @param t Käyttäjän antama syöte
-     *
-     *
-     */
-    /**
-     * laittaa datan arraylistaan
-     *
-     * @param data Käyttäjän antama syöte
-     *
-     *
-     */
+
     public void piirraTeksti(String data) {
         this.data = data;
         w = j.getWidth();

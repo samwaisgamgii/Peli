@@ -6,3 +6,4 @@ Päivä | Tunnit | Kuvaus
 23.09.2016 | 5h | Kayttöliittymä ja ohjain kehitystä, UML laajennus, checkstyle, ala-arvoinen pit ja Junit.
 01.10.2016 | 2h | Koodin fiksausta, teksti valuu nyt näytöllä, piirtoluokan lisays ja perimisuhteen poisto
 08.10.2016 | 4h | Gui polun määärittelyyn lisätty. Hieman bugeja tapettu. Lisätty mahdollisuus pelata "näytönsäästäjällä"; tosin vielä erittäin vajavainen. Otin liikaa kursseja. RIP
+09.10.2016 | 1h | v,c,s,r,m vaihtaa nyt teemaa. Pilkottu hieman ällöjä metodeita.

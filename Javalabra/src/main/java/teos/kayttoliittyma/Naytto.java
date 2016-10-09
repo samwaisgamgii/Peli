@@ -36,8 +36,9 @@ public class Naytto implements KeyListener {
      */
     public void luoIkkuna(Color vari) {
 
-        ikkuna.setBounds(500, 500, 1600, 900);
-        ikkuna.setLocationRelativeTo(null);
+        //ikkuna.setBounds(500, 500, 1600, 900);
+        ikkuna.setExtendedState(JFrame.MAXIMIZED_BOTH);
+       // ikkuna.setLocationRelativeTo(null);
         ikkuna.setUndecorated(true);
         taulu = new Piirtopaneeli(ikkuna);
         taulu.setNaytto(this);
@@ -100,6 +101,14 @@ public class Naytto implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_V) {
             
             ohjaus.sinM(3);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_R) {
+            
+            ohjaus.sinM(4);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_M) {
+            
+            ohjaus.sinM(5);
         }
 
     }
