@@ -1,0 +1,21 @@
+* To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+
+    public Ohjaus() {
+
+    }
+
+    public Ohjaus(Naytto n, TiedostonLuku l, VirheetJaSiivous vs) {
+        this.naytto = n;        pa.liikutaS(x);
+
+    }
+
+    public String getVirhe() {
+        return virhe;
+    }
+
+    public void setJPanel(Piirtopaneeli p) {
+        this.p = p;
+    }
+
+}

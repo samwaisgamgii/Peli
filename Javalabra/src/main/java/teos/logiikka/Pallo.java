@@ -10,6 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -18,9 +20,10 @@ import java.awt.geom.Point2D;
 public class Pallo {
 
     private boolean ylos = false, alas = false, eteen = false, taakse = false;
-    Graphics2D g2d;
-    Shape p;
-    Point2D p2;
+    private Graphics2D g2d;
+    private ArrayList<Shape> p;
+    private Point2D p2;
+    private int size = 4;
     private int x, y, radius, W, H;
 
     public Pallo() {
@@ -31,6 +34,9 @@ public class Pallo {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        p = new ArrayList<>();
+        p.add(new Ellipse2D.Double(x, y, radius, radius));
+        
     }
 
     public void setW(int W) {
@@ -49,18 +55,24 @@ public class Pallo {
 
     public void piirraYmpyra(Graphics g, int x, int y, int radius) {
         g2d = (Graphics2D) g;
-
-        p = new Ellipse2D.Double(x, y, radius, radius);
-        g2d.draw(p);
+        
+        
+      
+        for (int i = 0; i < p.size(); i++) {
+            g2d.draw(p.get(i));
+        }
 
     }
 
     public boolean onkoSisalla(int xK, int yK) {
         p2 = new Point2D.Double(xK, yK);
 
-        if (p.contains(p2)) {
-            kasvata();
-            return true;
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).contains(p2)) {
+                size++;
+                kasvata();
+                return true;
+            }
         }
         // ((xK - x) ^ 2 + (yK - y) ^ 2) == (radius ^ 2)
         return false;
@@ -68,7 +80,7 @@ public class Pallo {
 
     public void liikuta() {
         if (alas) {
-            if (y < 0 - radius / 5) {
+            if (y < 0 - radius / 3) {
                 y = H;
             }
             y = y - 3;
@@ -90,11 +102,15 @@ public class Pallo {
 
         }
         if (taakse) {
-            if (x < 0 - radius / 5) {
+            if (x < 0 - radius / 3) {
                 x = W;
             }
             x = x - 3;
 
+        }
+        p.add(new Ellipse2D.Double(x, y, radius, radius));
+        if(p.size() > size){
+            p.remove(0);
         }
     }
 
@@ -130,11 +146,17 @@ public class Pallo {
     }
 
     public void kasvata() {
-        if (radius > W || radius > H) {
-            radius = 80;
+        if (radius < 80) {
+            radius++;
         }
+        else{
+            radius = (int) ((int) 30+ (Math.random() * 50));
+        }
+        /*else{
+            p.add(new Ellipse2D.Double(x-50, y-50, radius, radius));
+        }*/
 
-        radius++;
+        
     }
 
     public int getX() {

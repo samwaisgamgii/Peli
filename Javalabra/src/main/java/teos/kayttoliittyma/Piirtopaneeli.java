@@ -39,13 +39,13 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     private ArrayList lista = new ArrayList();
     private ArrayList listaSin = new ArrayList();
 
-    private int red, green, blue;
+    private int red, green, blue, poistettuTyh = 0;
     private int delay = 6;
-
-    private int m = 0;
+    private int  b = 0, tyhja = 0,m = 0;
     private int t = 0, redS, blueS, w, h, valmis = 0, monesX = 10, monesY = 20;
 
     private char dataS = ' ', dataC = ' ';
+    private String tyh = "";
 
     public Piirtopaneeli() {
 
@@ -110,6 +110,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
         if (eka == true) {
             time.setDelay(4);
+            
             randomSijaintiLista(outo);
             o.piirraPallo(g, w, h, 1);
         }
@@ -119,11 +120,16 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             int y = (int) listaSin.get(i + 3);
             g2d.drawString((String) listaSin.get(i), x, y);
             if (o.tarkastaOnkoSisalla(x, y)) {
+                tyh = (String) listaSin.get(i);
+                if (tyh.equals(" ")) {
+                   poistettuTyh++;
+                }
                 listaSin.remove(i);
-                listaSin.remove(i);
-                listaSin.remove(i);
-                listaSin.remove(i);
-                listaSin.remove(i);
+                    listaSin.remove(i);
+                    listaSin.remove(i);
+                    listaSin.remove(i);
+                    listaSin.remove(i);
+
             }
 
         }
@@ -134,10 +140,10 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     public void peliLoppu(Graphics g) {
 
-        if (listaSin.size() < 10) {
+        if (listaSin.size() - poistettuTyh <= 0) {
             g2d = (Graphics2D) g;
             g2d.setFont(new Font("Courier New", 1, 30));
-            g2d.drawString("The End. Paina 'R' pelataksesi uudelleen.", w / 3, h / 2);
+            g2d.drawString("Paina 'R' pelataksesi uudelleen.", w / 3, h / 2);
 
         }
 
@@ -158,8 +164,8 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         yr = (int) listaSin.get(i + 2);
         yspeed = (int) listaSin.get(i + 3);
         yrspeed = yr + yspeed;
-        if (yrspeed <= 2 || yrspeed >= h) {
-            yrspeed = -yrspeed * (int) ((Math.random() * 5) - 2);
+        if (yrspeed < 0 || yrspeed >= h) {
+            yrspeed = -yrspeed * (int) ((Math.random() * 5) - 1);
             listaSin.set(i + 2, yrspeed);
 
         } else {
@@ -173,8 +179,8 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         xr = (int) listaSin.get(i);
         xspeed = (int) listaSin.get(i + 1);
         xrspeed = xr + xspeed;
-        if (xrspeed <= 2 || xrspeed >= w) {
-            xrspeed = -xrspeed * (int) ((Math.random() * 5) - 2);
+        if (xrspeed < 0 || xrspeed >= w) {
+            xrspeed = -xrspeed * (int) ((Math.random() * 5) - 1);
             listaSin.set(i, xrspeed);
         } else {
             listaSin.set(i, xrspeed);
