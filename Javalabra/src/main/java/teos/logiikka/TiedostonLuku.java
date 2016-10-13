@@ -35,7 +35,7 @@ public class TiedostonLuku {
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(null);
         fc.setDialogTitle("Kerro missä tiedostot ovat");
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (fc.showOpenDialog(avaa) == JFileChooser.APPROVE_OPTION) {
             System.out.println("apua");
         }
@@ -47,6 +47,7 @@ public class TiedostonLuku {
      * hakee kaikki tietyn tyyppiset tiedostot polusta lukee ne kaikki yhteen
      * String tiedostoon
      *
+     * @return 
      */
     public String haeTiedosto() {
         polkuGui();
@@ -55,8 +56,12 @@ public class TiedostonLuku {
         if (!kansio.exists()) {
             return "virhe : polkua ei ole!";
         }
-        tiedostolista = kansio.listFiles();
-        data = lue(tiedostolista, tyyppi);
+        try {
+            tiedostolista = kansio.listFiles();
+            data = lue(tiedostolista, tyyppi);
+        } catch (Exception e) {
+            return "virhe : tiedostoa ei voitu lukea" + e;
+        }
 
         return data;
     }

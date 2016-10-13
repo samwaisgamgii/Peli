@@ -16,12 +16,16 @@ import teos.ohjaaja.Ohjaus;
 public class Aja {
 
     public static void main(String[] args) {
-
-        TiedostonLuku lue = new TiedostonLuku();
-        VirheetJaSiivous vs = new VirheetJaSiivous();
-        Naytto n = new Naytto();
-        Ohjaus ohjaus = new Ohjaus(n, lue, vs);
-        ohjaus.aloitus();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                TiedostonLuku lue = new TiedostonLuku();
+                VirheetJaSiivous vs = new VirheetJaSiivous();
+                Naytto n = new Naytto();
+                Ohjaus ohjaus = new Ohjaus(n, lue, vs);
+                ohjaus.aloitus();
+            }
+        });
 
     }
 

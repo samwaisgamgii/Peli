@@ -110,6 +110,10 @@ public class Naytto implements KeyListener {
             
             ohjaus.sinM(5);
         }
+        if (e.getKeyCode() == KeyEvent.VK_O) {
+            
+            ohjaus.sinM(6);
+        }
 
     }
 

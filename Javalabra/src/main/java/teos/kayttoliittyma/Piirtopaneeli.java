@@ -6,6 +6,7 @@
 package teos.kayttoliittyma;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import teos.ohjaaja.Ohjaus;
 
 /**
  *
@@ -26,17 +28,22 @@ import javax.swing.Timer;
 public class Piirtopaneeli extends JPanel implements ActionListener {
 
     private JFrame j;
-    private int delay = 10;
     private String data;
     private Naytto n;
-    private boolean eka = true;
-    private int red, green, blue;
     private Timer time;
-    private boolean rajahdus = false, cC = false, cSin = false, matrix = true, sin = false;
+    private Ohjaus o;
+    Graphics2D g2d;
+
+    private boolean eka = true;
+    private boolean outo = false, rajahdus = false, cC = false, cSin = false, matrix = true, sin = false;
     private ArrayList lista = new ArrayList();
     private ArrayList listaSin = new ArrayList();
+
+    private int red, green, blue;
+    private int delay = 6;
+
     private int m = 0;
-    private int t = 0, redS, blueS, x, y, w, h, valmis = 0, monesX = 10, monesY = 20;
+    private int t = 0, redS, blueS, w, h, valmis = 0, monesX = 10, monesY = 20;
 
     private char dataS = ' ', dataC = ' ';
 
@@ -89,25 +96,120 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
         }
         if (rajahdus == true) {
-            rajahdus(g);
+            rajahdus(g, 0);
+        }
+        if (outo == true) {
+            rajahdus(g, 1);
         }
 
     }
 
-    public void rajahdus(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+    public void rajahdus(Graphics g, int outo) {
+        g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
-        for (int i = 0; i < data.length(); i++) {
-            char datar = data.charAt(i);
-            int xr = (int) (Math.random() * w);
-            int yr = (int) (Math.random() * h);
-            g2d.drawString(String.valueOf(datar), xr, yr);
+
+        if (eka == true) {
+            time.setDelay(4);
+            randomSijaintiLista(outo);
+            o.piirraPallo(g, w, h, 1);
+        }
+        o.piirraPallo(g, w, h, 2);
+        for (int i = 0; i < listaSin.size() - 5; i = i + 5) {
+            int x = (int) listaSin.get(i + 1);
+            int y = (int) listaSin.get(i + 3);
+            g2d.drawString((String) listaSin.get(i), x, y);
+            if (o.tarkastaOnkoSisalla(x, y)) {
+                listaSin.remove(i);
+                listaSin.remove(i);
+                listaSin.remove(i);
+                listaSin.remove(i);
+                listaSin.remove(i);
+            }
 
         }
+        paivitaSijainti();
+        peliLoppu(g);
+
+    }
+
+    public void peliLoppu(Graphics g) {
+
+        if (listaSin.size() < 10) {
+            g2d = (Graphics2D) g;
+            g2d.setFont(new Font("Courier New", 1, 30));
+            g2d.drawString("The End. Paina 'R' pelataksesi uudelleen.", w / 3, h / 2);
+
+        }
+
+    }
+
+    public void paivitaSijainti() {
+
+        for (int i = 1; i < listaSin.size() - 5; i = i + 5) {
+
+            paivitaX(i);
+            paivitaY(i);
+
+        }
+    }
+
+    public void paivitaY(int i) {
+        int yr, yspeed, yrspeed;
+        yr = (int) listaSin.get(i + 2);
+        yspeed = (int) listaSin.get(i + 3);
+        yrspeed = yr + yspeed;
+        if (yrspeed <= 2 || yrspeed >= h) {
+            yrspeed = -yrspeed * (int) ((Math.random() * 5) - 2);
+            listaSin.set(i + 2, yrspeed);
+
+        } else {
+            listaSin.set(i + 2, yrspeed);
+        }
+
+    }
+
+    public void paivitaX(int i) {
+        int xr, xspeed, xrspeed;
+        xr = (int) listaSin.get(i);
+        xspeed = (int) listaSin.get(i + 1);
+        xrspeed = xr + xspeed;
+        if (xrspeed <= 2 || xrspeed >= w) {
+            xrspeed = -xrspeed * (int) ((Math.random() * 5) - 2);
+            listaSin.set(i, xrspeed);
+        } else {
+            listaSin.set(i, xrspeed);
+        }
+
+    }
+
+    public void randomSijaintiLista(int outo) {
+        int xr, yr, xspeed, yspeed;
+        char datar;
+        for (int i = 0; i < data.length(); i++) {
+            datar = data.charAt(i);
+            if (outo == 1) {
+                xr = h / 2;
+                yr = w / 2;
+
+            } else {
+                xr = (int) (Math.random() * w);
+                yr = (int) (Math.random() * h);
+            }
+
+            xspeed = (int) ((Math.random() * 5) - 2);
+            yspeed = (int) ((Math.random() * 5) - 2);
+            listaSin.add(String.valueOf(datar));
+            listaSin.add(xr);
+            listaSin.add(xspeed);
+            listaSin.add(yr);
+            listaSin.add(yspeed);
+
+        }
+        eka = false;
     }
 
     public void piirraSinAalto(Graphics g, int s) {
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
         sinAalto(s);
 
@@ -180,7 +282,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     }
 
     public void piirraGradualiisesti(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
 
         for (int i = 0; i <= m; i = i + 3) {
@@ -194,6 +296,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             listaSin.clear();
             t = 0;
             eka = true;
+            outo = false;
             rajahdus = false;
             cSin = false;
             cC = false;
@@ -205,6 +308,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             t = 0;
             eka = true;
             rajahdus = false;
+            outo = false;
             matrix = false;
             cC = false;
             sin = false;
@@ -216,6 +320,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             eka = true;
             rajahdus = false;
             matrix = false;
+            outo = false;
             sin = false;
             cSin = false;
             cC = true;
@@ -226,6 +331,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             eka = true;
             matrix = false;
             sin = false;
+            outo = false;
             cSin = false;
             cC = false;
             rajahdus = true;
@@ -235,35 +341,51 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             t = 0;
             eka = true;
             sin = false;
+            outo = false;
             cSin = false;
             cC = false;
             rajahdus = false;
             matrix = true;
         }
+        if (i == 6) {
+            listaSin.clear();
+            t = 0;
+            eka = true;
+            sin = false;
+            cSin = false;
+            cC = false;
+            rajahdus = false;
+            matrix = false;
+            outo = true;
+
+        }
 
     }
 
-
-    public void piirraTeksti(String data) {
+    public void asennaJaPiirra(String data, Ohjaus o) {
+        this.o = o;
         this.data = data;
-        w = j.getWidth();
-        h = j.getHeight();
-        x = w / 2;
-        y = (h / 1) - 20;
+        this.w = j.getWidth();
+        this.h = j.getHeight();
+
         lisaaDataListaan(data);
+
+    }
+
+    public void tarkistaXjaY() {
+        if (monesX >= w - 30) {
+            monesX = 10;
+            monesY = monesY + 20;
+        }
+        if (monesY >= h - 20) {
+            monesY = 20;
+        }
 
     }
 
     public void lisaaDataListaan(String data) {
         for (int i = 0; i < data.length(); i++) {
-            if (monesX >= w - 30) {
-                monesX = 10;
-                monesY = monesY + 20;
-            }
-            if (monesY >= h - 20) {
-                monesY = 20;
-            }
-
+            tarkistaXjaY();
             dataC = data.charAt(i);
             monesX = monesX + 10;
 

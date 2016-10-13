@@ -8,9 +8,10 @@ package teos.ohjaaja;
 import teos.kayttoliittyma.Naytto;
 import teos.logiikka.TiedostonLuku;
 import java.awt.Color;
+import java.awt.Graphics;
 
 import teos.kayttoliittyma.Piirtopaneeli;
-import teos.logiikka.Musiikki;
+import teos.logiikka.Pallo;
 import teos.logiikka.VirheetJaSiivous;
 
 /**
@@ -24,6 +25,7 @@ public class Ohjaus {
     private Naytto naytto;
     private VirheetJaSiivous vs;
     private Piirtopaneeli p;
+    private Pallo pa;
 
     public Ohjaus() {
 
@@ -42,11 +44,6 @@ public class Ohjaus {
         lueTarkistaPiirra();
     }
 
-    public void musiikki() {
-        Musiikki musa = new Musiikki();
-
-    }
-
     /**
      * lukee, tarkistaa ja delegoi piirtämisen
      *
@@ -55,10 +52,12 @@ public class Ohjaus {
     public void lueTarkistaPiirra() {
         String data = lue.haeTiedosto();
         if (data.startsWith("virhe")) {
-            virhe = "tiedän: " + data;
+            virhe = data;
             naytto.ilmoitaVirhe(virhe);
+        }else{
+           p.asennaJaPiirra(data, this);  
         }
-        p.piirraTeksti(data);
+       
     }
 
     /**
@@ -74,11 +73,29 @@ public class Ohjaus {
         p.sinM(i);
     }
 
+    public void piirraPallo(Graphics g, int w, int h, int eka) {
+        if (eka == 1) {
+            pa = new Pallo(w / 2, h / 2, 20);
+            pa.setH(h);
+            pa.setW(w);
+            pa.drawP(g);
+        }
+
+        pa.drawP(g);
+
+    }
+
+    public boolean tarkastaOnkoSisalla(int x, int y) {
+        return pa.onkoSisalla(x, y);
+    }
+
     /**
      * valittaa liikkumis käskyn
+     * @param x
      */
-    public void liikuta(char i) {
-        
+    public void liikuta(char x) {
+        pa.liikutaS(x);
+
     }
 
     public String getVirhe() {
