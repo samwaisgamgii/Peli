@@ -14,7 +14,10 @@ public class VirheetJaSiivous {
     public VirheetJaSiivous() {
 
     }
-
+    /**
+     * Sulkee ohjelman
+     *
+     */
     public void suljeOhjelma() {
         System.exit(0);
     }

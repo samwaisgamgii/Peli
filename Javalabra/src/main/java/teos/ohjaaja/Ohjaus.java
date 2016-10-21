@@ -97,7 +97,7 @@ public class Ohjaus {
     /**
      * valittaa liikkumis käskyn
      *
-     * @param x
+     * @param x liikkumis-suunta ID
      */
     public void liikuta(char x) {
         if (x != ' ') {

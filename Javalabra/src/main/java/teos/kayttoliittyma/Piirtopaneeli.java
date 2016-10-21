@@ -54,7 +54,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * Ajastaa
      *
-     * @param jf
+     * @param jf Jframe
      */
     public Piirtopaneeli(JFrame jf) {
         j = jf;
@@ -73,7 +73,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * Hallinnoi piirto asetuksia
      *
-     * @param g
+     * @param g grafiikka
      *
      *
      */
@@ -107,8 +107,8 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * hoitaa rajahdyksen ja pallon hallinoinnin
      *
-     * @param g
-     * @param outo
+     * @param g grafiikka
+     * @param outo 1 jos haluaa oudon räjähdyksen muuten 0 
      */
     public void rajahdus(Graphics g, int outo) {
         g2d = (Graphics2D) g;
@@ -136,9 +136,9 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * tarkistaa onko kirjain sisällä ja poistaa kirjaimen jos on
      *
-     * @param x
-     * @param y
-     * @param i
+     * @param x sijainti
+     * @param y sijainti
+     * @param i listan alkio
      */
     public void tarkastaOnkoSisalla(int x, int y, int i) {
         if (o.tarkastaOnkoSisalla(x, y)) {
@@ -158,7 +158,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * Luo 'peli loppu' ilmoituksen
      *
-     * @param g
+     * @param g grafiikka
      */
     public void peliLoppu(Graphics g) {
 
@@ -171,6 +171,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * paivittaa x ja y sijainnin datalle
+     *
+     */
+
     public void paivitaSijainti() {
 
         for (int i = 1; i < listaSin.size() - 5; i = i + 5) {
@@ -180,6 +185,12 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
         }
     }
+
+    /**
+     * päivittää y sijainnin listaan
+     *
+     * @param i alkion numero
+     */
 
     public void paivitaY(int i) {
         int yr, yspeed, yrspeed;
@@ -196,6 +207,12 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * päivittää X sijainnin listaan
+     *
+     * @param i alkion numero
+     */
+
     public void paivitaX(int i) {
         int xr, xspeed, xrspeed;
         xr = (int) listaSin.get(i);
@@ -210,6 +227,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Vie random sijainnit ja nopeudet listaan
+     *
+     * @param outo 0 tai 1 riippuen haluttavasta moodista
+     */
     public void randomSijaintiLista(int outo) {
         int xr, yr, xspeed, yspeed;
         char datar;
@@ -236,6 +258,12 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         eka = false;
     }
 
+    /**
+     * piirtää sin aallon
+     *
+     * @param g grafiikka
+     * @param s aallon tyyppi
+     */
     public void piirraSinAalto(Graphics g, int s) {
         g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
@@ -251,6 +279,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * vie sin arvot listaan
+     *
+     */
+
     public void lisaaSinArvotListaan() {
         dataS = data.charAt(t);
         listaSin.add(String.valueOf(dataS));
@@ -258,6 +291,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         listaSin.add(blueS);
     }
 
+    /**
+     * Huolehtii piirto datan lisäämisesta ja toistosta
+     *
+     * @param tyyppi huolehdittavan tilanteen tyyppi
+     */
     public void lisaaJaReplay(String tyyppi) {
         if (tyyppi.equals("t")) {
             if (t < data.length() - 3) {
@@ -279,6 +317,12 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Arpoo sin arvot systeemin aikaa käyttäen
+     *
+     * @param i  aallon tyyppi: 1 , 2 tai 3
+     */
+
     public void sinAalto(int i) {
         if (i == 1) {
             double aika = System.currentTimeMillis();
@@ -299,6 +343,10 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * arpoo värit systeemin aikaa käyttäen
+     * @return uusi väri
+     */
     public Color variAnimaatio() {
         double aika = System.currentTimeMillis();
         red = (int) ((2 + sin(aika * 0.001)) * 64);
@@ -309,6 +357,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         return uusi;
     }
 
+    /**
+     * piirtää kirjaimet yksitellen
+     *
+     * @param g grafiikka
+     */
     public void piirraGradualiisesti(Graphics g) {
         g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
@@ -319,6 +372,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
         lisaaJaReplay("m");
     }
 
+    /**
+     * huolehtii piirto "moden" vaihdosta
+     *
+     * @param i piirto moodi 1,2,3,4,5 tai 6
+     */
     public void sinM(int i) {
         if (i == 1) {
             listaSin.clear();
@@ -390,6 +448,12 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * asentaa piirrettävän datan ja näytön mitat
+     *
+     * @param data piirrettävä data
+     * @param o ohjaaja
+     */
     public void asennaJaPiirra(String data, Ohjaus o) {
         this.o = o;
         this.data = data;
@@ -400,6 +464,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * tarkastaa että x ja y piirtyvät oikein näytölle
+     *
+     *
+     */
     public void tarkistaXjaY() {
         if (monesX >= w - 30) {
             monesX = 10;
@@ -411,6 +480,11 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * lisää graduaali datan listaan
+     *
+     * @param data string data
+     */
     public void lisaaDataListaan(String data) {
         for (int i = 0; i < data.length(); i++) {
             tarkistaXjaY();

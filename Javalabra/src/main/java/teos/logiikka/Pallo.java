@@ -50,7 +50,7 @@ public class Pallo {
     /**
      * liikuttaa ympyrää ja piirtää sen
      *
-     * @param g
+     * @param g grafiikka
      *
      */
     public void drawP(Graphics g) {
@@ -62,10 +62,10 @@ public class Pallo {
     /**
      * käy listan läpi ja piirtää ne
      *
-     * @param g
-     * @param x
-     * @param y
-     * @param radius
+     * @param g grafiikka
+     * @param x x sijainti
+     * @param y y sijainti
+     * @param radius ympyrän säde
      */
     public void piirraYmpyra(Graphics g, int x, int y, int radius) {
         g2d = (Graphics2D) g;
@@ -79,8 +79,8 @@ public class Pallo {
     /**
      * testaa onko piste ympyrän sisällä
      *
-     * @param xK
-     * @param yK
+     * @param xK testatavan pisteen x
+     * @param yK testattavan pisteen y
      * @return true, false
      */
     public boolean onkoSisalla(int xK, int yK) {
@@ -141,8 +141,7 @@ public class Pallo {
     /**
      * tarkastaa liikuttamis syötteen ja sijoittaa oikeat boolean arvot
      *
-     * @param l
-     * @return
+     * @param l liikkumis ID
      */
     public void liikutaS(char l) {
         if (l == 'y') {

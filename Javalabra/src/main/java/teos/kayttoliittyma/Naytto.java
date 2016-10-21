@@ -56,7 +56,7 @@ public class Naytto implements KeyListener {
 
     /**
      * luo guin polun määrittelemiseen
-     *
+     * @return polku tiedostoon
      */
     public String polkuGui() {
         JButton avaa = new JButton();

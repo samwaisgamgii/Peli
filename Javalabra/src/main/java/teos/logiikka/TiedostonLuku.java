@@ -29,7 +29,7 @@ public class TiedostonLuku {
      * hakee kaikki tietyn tyyppiset tiedostot polusta lukee ne kaikki yhteen
      * String tiedostoon
      *
-     * @return
+     * @return data tiedostosta
      */
     public String haeTiedosto() {
         polku = ohjaus.luoGuiIO();
@@ -50,8 +50,8 @@ public class TiedostonLuku {
     /**
      * käy tiedostonlistan läpi ja lukee tiedot String
      *
-     * @param tiedostolista
-     * @return
+     * @param tiedostolista läpi käytävä file lista
+     * @return data
      */
     public String lue(File[] tiedostolista) {
 
