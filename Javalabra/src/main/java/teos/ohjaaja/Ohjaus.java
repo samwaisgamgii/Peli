@@ -19,27 +19,28 @@ import teos.logiikka.VirheetJaSiivous;
  * @author Sami
  */
 public class Ohjaus {
-
+    
     private TiedostonLuku lue;
-    private String virhe;
+    private String virhe = "";
     private Naytto naytto;
     private VirheetJaSiivous vs;
     private Piirtopaneeli p;
     private Pallo pa;
-
+    
     public Ohjaus() {
-
+        
     }
-
+    
     public Ohjaus(Naytto n, TiedostonLuku l, VirheetJaSiivous vs) {
         this.naytto = n;
         this.lue = l;
         this.vs = vs;
-
+        
     }
-
+    
     public void aloitus() {
         naytto.setOhjaus(this);
+        lue.setOhjaus(this);
         naytto.luoIkkuna(Color.BLACK);
         lueTarkistaPiirra();
     }
@@ -54,10 +55,14 @@ public class Ohjaus {
         if (data.startsWith("virhe")) {
             virhe = data;
             naytto.ilmoitaVirhe(virhe);
-        }else{
-           p.asennaJaPiirra(data, this);  
+        } else {
+            p.asennaJaPiirra(data, this);
         }
-       
+        
+    }
+    
+    public String luoGuiIO() {
+        return naytto.polkuGui();
     }
 
     /**
@@ -68,11 +73,11 @@ public class Ohjaus {
     public void escPainettu() {
         vs.suljeOhjelma();
     }
-
+    
     public void sinM(int i) {
         p.sinM(i);
     }
-
+    
     public void piirraPallo(Graphics g, int w, int h, int eka) {
         if (eka == 1) {
             pa = new Pallo(w / 2, h / 2, 20);
@@ -80,30 +85,33 @@ public class Ohjaus {
             pa.setW(w);
             pa.drawP(g);
         }
-
+        
         pa.drawP(g);
-
+        
     }
-
+    
     public boolean tarkastaOnkoSisalla(int x, int y) {
         return pa.onkoSisalla(x, y);
     }
 
     /**
      * valittaa liikkumis käskyn
+     *
      * @param x
      */
     public void liikuta(char x) {
-        pa.liikutaS(x);
-
+        if (x != ' ') {
+            pa.liikutaS(x);
+        }
+        
     }
-
+    
     public String getVirhe() {
         return virhe;
     }
-
+    
     public void setJPanel(Piirtopaneeli p) {
         this.p = p;
     }
-
+    
 }

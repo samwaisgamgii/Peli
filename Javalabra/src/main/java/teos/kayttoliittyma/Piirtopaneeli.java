@@ -41,7 +41,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     private int red, green, blue, poistettuTyh = 0;
     private int delay = 6;
-    private int  b = 0, tyhja = 0,m = 0;
+    private int b = 0, tyhja = 0, m = 0;
     private int t = 0, redS, blueS, w, h, valmis = 0, monesX = 10, monesY = 20;
 
     private char dataS = ' ', dataC = ' ';
@@ -54,7 +54,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     /**
      * Ajastaa
      *
-     *
+     * @param jf
      */
     public Piirtopaneeli(JFrame jf) {
         j = jf;
@@ -71,9 +71,9 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
     }
 
     /**
-     * hoitaa kahden moden piirtämisen
+     * Hallinnoi piirto asetuksia
      *
-     * @param g Käyttäjän antama syöte
+     * @param g
      *
      *
      */
@@ -104,13 +104,19 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * hoitaa rajahdyksen ja pallon hallinoinnin
+     *
+     * @param g
+     * @param outo
+     */
     public void rajahdus(Graphics g, int outo) {
         g2d = (Graphics2D) g;
         g2d.setColor(variAnimaatio());
 
         if (eka == true) {
             time.setDelay(4);
-            
+
             randomSijaintiLista(outo);
             o.piirraPallo(g, w, h, 1);
         }
@@ -119,18 +125,7 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
             int x = (int) listaSin.get(i + 1);
             int y = (int) listaSin.get(i + 3);
             g2d.drawString((String) listaSin.get(i), x, y);
-            if (o.tarkastaOnkoSisalla(x, y)) {
-                tyh = (String) listaSin.get(i);
-                if (tyh.equals(" ")) {
-                   poistettuTyh++;
-                }
-                listaSin.remove(i);
-                    listaSin.remove(i);
-                    listaSin.remove(i);
-                    listaSin.remove(i);
-                    listaSin.remove(i);
-
-            }
+            tarkastaOnkoSisalla(x, y, i);
 
         }
         paivitaSijainti();
@@ -138,6 +133,33 @@ public class Piirtopaneeli extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * tarkistaa onko kirjain sisällä ja poistaa kirjaimen jos on
+     *
+     * @param x
+     * @param y
+     * @param i
+     */
+    public void tarkastaOnkoSisalla(int x, int y, int i) {
+        if (o.tarkastaOnkoSisalla(x, y)) {
+            tyh = (String) listaSin.get(i);
+            if (tyh.equals(" ")) {
+                poistettuTyh++;
+            }
+            listaSin.remove(i);
+            listaSin.remove(i);
+            listaSin.remove(i);
+            listaSin.remove(i);
+            listaSin.remove(i);
+
+        }
+    }
+
+    /**
+     * Luo 'peli loppu' ilmoituksen
+     *
+     * @param g
+     */
     public void peliLoppu(Graphics g) {
 
         if (listaSin.size() - poistettuTyh <= 0) {

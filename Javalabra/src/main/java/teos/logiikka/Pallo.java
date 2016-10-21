@@ -11,7 +11,6 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -24,46 +23,66 @@ public class Pallo {
     private ArrayList<Shape> p;
     private Point2D p2;
     private int size = 4;
-    private int x, y, radius, W, H;
+    private int x, y, radius, w, h;
 
     public Pallo() {
 
     }
 
     public Pallo(int x, int y, int radius) {
+
         this.x = x;
         this.y = y;
         this.radius = radius;
         p = new ArrayList<>();
         p.add(new Ellipse2D.Double(x, y, radius, radius));
-        
+
     }
 
-    public void setW(int W) {
-        this.W = W;
+    public void setW(int w) {
+        this.w = w;
     }
 
-    public void setH(int H) {
-        this.H = H;
+    public void setH(int h) {
+        this.h = h;
     }
 
+    /**
+     * liikuttaa ympyrää ja piirtää sen
+     *
+     * @param g
+     *
+     */
     public void drawP(Graphics g) {
         liikuta();
         piirraYmpyra(g, x, y, radius);
 
     }
 
+    /**
+     * käy listan läpi ja piirtää ne
+     *
+     * @param g
+     * @param x
+     * @param y
+     * @param radius
+     */
     public void piirraYmpyra(Graphics g, int x, int y, int radius) {
         g2d = (Graphics2D) g;
-        
-        
-      
+
         for (int i = 0; i < p.size(); i++) {
             g2d.draw(p.get(i));
         }
 
     }
 
+    /**
+     * testaa onko piste ympyrän sisällä
+     *
+     * @param xK
+     * @param yK
+     * @return true, false
+     */
     public boolean onkoSisalla(int xK, int yK) {
         p2 = new Point2D.Double(xK, yK);
 
@@ -78,16 +97,21 @@ public class Pallo {
         return false;
     }
 
+    /**
+     * liikuttaa ympyrää
+     *
+     *
+     */
     public void liikuta() {
         if (alas) {
             if (y < 0 - radius / 3) {
-                y = H;
+                y = h;
             }
             y = y - 3;
 
         }
         if (ylos) {
-            if (y > H + radius / 5) {
+            if (y > h + radius / 5) {
                 y = 0;
 
             }
@@ -95,7 +119,7 @@ public class Pallo {
 
         }
         if (eteen) {
-            if (x > W + radius / 5) {
+            if (x > w + radius / 5) {
                 x = 0;
             }
             x = x + 3;
@@ -103,17 +127,23 @@ public class Pallo {
         }
         if (taakse) {
             if (x < 0 - radius / 3) {
-                x = W;
+                x = w;
             }
             x = x - 3;
 
         }
         p.add(new Ellipse2D.Double(x, y, radius, radius));
-        if(p.size() > size){
+        if (p.size() > size) {
             p.remove(0);
         }
     }
 
+    /**
+     * tarkastaa liikuttamis syötteen ja sijoittaa oikeat boolean arvot
+     *
+     * @param l
+     * @return
+     */
     public void liikutaS(char l) {
         if (l == 'y') {
             ylos = false;
@@ -145,30 +175,40 @@ public class Pallo {
 
     }
 
+    /**
+     * kasvattaa ympyrää
+     *
+     */
     public void kasvata() {
         if (radius < 80) {
             radius++;
-        }
-        else{
-            radius = (int) ((int) 30+ (Math.random() * 50));
+        } else {
+            radius = (int) ((int) 30 + (Math.random() * 50));
         }
         /*else{
             p.add(new Ellipse2D.Double(x-50, y-50, radius, radius));
         }*/
 
-        
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
         this.x = x;
     }
 
+    public ArrayList getP() {
+        return this.p;
+    }
+
+    public int getR() {
+        return this.radius;
+    }
+
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int y) {

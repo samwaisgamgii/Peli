@@ -8,6 +8,8 @@ package teos.kayttoliittyma;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +23,7 @@ public class Naytto implements KeyListener {
 
     private JFrame ikkuna = new JFrame();
     private Piirtopaneeli taulu;
+    private int chooser;
     Ohjaus ohjaus;
 
     public Naytto() {
@@ -38,7 +41,7 @@ public class Naytto implements KeyListener {
 
         //ikkuna.setBounds(500, 500, 1600, 900);
         ikkuna.setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // ikkuna.setLocationRelativeTo(null);
+        // ikkuna.setLocationRelativeTo(null);
         ikkuna.setUndecorated(true);
         taulu = new Piirtopaneeli(ikkuna);
         taulu.setNaytto(this);
@@ -49,6 +52,24 @@ public class Naytto implements KeyListener {
         ikkuna.setVisible(true);
         ikkuna.addKeyListener(this);
 
+    }
+
+    /**
+     * luo guin polun määrittelemiseen
+     *
+     */
+    public String polkuGui() {
+        JButton avaa = new JButton();
+
+        JFileChooser fc = new JFileChooser();
+        fc.setCurrentDirectory(null);
+        fc.setDialogTitle("Kerro missä tiedostot ovat");
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        if (fc.showOpenDialog(avaa) == JFileChooser.APPROVE_OPTION) {
+            chooser = 1;
+        }
+        String polku = fc.getSelectedFile().getAbsolutePath();
+        return polku;
     }
 
     public void setOhjaus(Ohjaus ohjaus) {
@@ -91,27 +112,27 @@ public class Naytto implements KeyListener {
             ohjaus.liikuta('t');
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
-           
+
             ohjaus.sinM(1);
         }
         if (e.getKeyCode() == KeyEvent.VK_C) {
-            
+
             ohjaus.sinM(2);
         }
         if (e.getKeyCode() == KeyEvent.VK_V) {
-            
+
             ohjaus.sinM(3);
         }
         if (e.getKeyCode() == KeyEvent.VK_R) {
-            
+
             ohjaus.sinM(4);
         }
         if (e.getKeyCode() == KeyEvent.VK_M) {
-            
+
             ohjaus.sinM(5);
         }
         if (e.getKeyCode() == KeyEvent.VK_O) {
-            
+
             ohjaus.sinM(6);
         }
 

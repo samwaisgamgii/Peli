@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2016</copyright>
     <item>
       <title>File: 7,
-             Errors: 0,
+             Errors: 2,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#teos.logiikka.Musiikki.java">teos/logiikka/Musiikki.java</a>
+                  <a href="${project.url}/checkstyle.html#teos.logiikka.Pallo.java">teos/logiikka/Pallo.java</a>
                 </td>
                 <td>
                   0
@@ -139,7 +139,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                       </tbody>
