@@ -5,7 +5,7 @@ Repii datan määritellystä kansiosta ja laittaa sen näytölle heiluu coolisti
 **Dokumentaatio:**
 [Aiheen kuvaus ja rakenne](dokumentaatio/aiheenKuvausJaRakenne.md)
 
-[Käyttöohjeet](dokumentaatio/käyttöohjeet.md)
+[Käyttöohjeet](dokumentaatio/Käyttöohjeet.md)
 
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
