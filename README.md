@@ -8,5 +8,6 @@ Repii datan määritellystä kansiosta ja laittaa sen näytölle heiluu coolisti
 
 
 
-[linkki Checkstyle](https://htmlpreview.github.io/?https://github.com/samwaisgamgii/Peli/blob/master/dokumentaatio/Checkstyle/checkstyle.html)
+[Checkstyle](https://htmlpreview.github.io/?https://github.com/samwaisgamgii/Peli/blob/master/dokumentaatio/Checkstyle/checkstyle.html)
 
+[PIT-raportti](https://htmlpreview.github.io/?https://github.com/samwaisgamgii/Peli/blob/master/dokumentaatio/PIT-raportti/index.html)
