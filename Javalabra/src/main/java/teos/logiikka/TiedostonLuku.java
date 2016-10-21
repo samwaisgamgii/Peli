@@ -10,7 +10,7 @@ import java.util.Scanner;
 import teos.ohjaaja.Ohjaus;
 
 /**
- *
+ *  luo io välineet ja hakee datan kansiosta.
  * @author Sami
  */
 public class TiedostonLuku {
@@ -20,14 +20,16 @@ public class TiedostonLuku {
     private Ohjaus ohjaus;
     private File[] tiedostolista;
     private String polku;
-
+    /**
+     * konstruktori.
+     */
     public TiedostonLuku() {
 
     }
 
     /**
      * hakee kaikki tietyn tyyppiset tiedostot polusta lukee ne kaikki yhteen
-     * String tiedostoon
+     * String tiedostoon.
      *
      * @return data tiedostosta
      */
@@ -48,7 +50,7 @@ public class TiedostonLuku {
     }
 
     /**
-     * käy tiedostonlistan läpi ja lukee tiedot String
+     * käy tiedostonlistan läpi ja lukee tiedot String.
      *
      * @param tiedostolista läpi käytävä file lista
      * @return data

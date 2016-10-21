@@ -13,6 +13,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /**
+ * Pallon esittämiseen tarvittava luokka.
  *
  * @author Sami
  */
@@ -25,10 +26,19 @@ public class Pallo {
     private int size = 4;
     private int x, y, radius, w, h;
 
+    /**
+     * konstruktori.
+     */
     public Pallo() {
 
     }
 
+    /**
+     * paramitrinen konstruktori.
+     * @param x x
+     * @param y y
+     * @param radius säde
+     */
     public Pallo(int x, int y, int radius) {
 
         this.x = x;
@@ -39,16 +49,26 @@ public class Pallo {
 
     }
 
+    /**
+     * asettaa näytön leveyden.
+     *
+     * @param w leveys
+     */
     public void setW(int w) {
         this.w = w;
     }
 
+    /**
+     * asettaa näytön korkeuden.
+     *
+     * @param h korkeus
+     */
     public void setH(int h) {
         this.h = h;
     }
 
     /**
-     * liikuttaa ympyrää ja piirtää sen
+     * liikuttaa ympyrää ja piirtää sen.
      *
      * @param g grafiikka
      *
@@ -60,7 +80,7 @@ public class Pallo {
     }
 
     /**
-     * käy listan läpi ja piirtää ne
+     * käy listan läpi ja piirtää ne.
      *
      * @param g grafiikka
      * @param x x sijainti
@@ -77,7 +97,7 @@ public class Pallo {
     }
 
     /**
-     * testaa onko piste ympyrän sisällä
+     * testaa onko piste ympyrän sisällä.
      *
      * @param xK testatavan pisteen x
      * @param yK testattavan pisteen y
@@ -98,7 +118,7 @@ public class Pallo {
     }
 
     /**
-     * liikuttaa ympyrää
+     * liikuttaa ympyrää.
      *
      *
      */
@@ -139,7 +159,7 @@ public class Pallo {
     }
 
     /**
-     * tarkastaa liikuttamis syötteen ja sijoittaa oikeat boolean arvot
+     * tarkastaa liikuttamis syötteen ja sijoittaa oikeat boolean arvot.
      *
      * @param l liikkumis ID
      */
@@ -175,7 +195,7 @@ public class Pallo {
     }
 
     /**
-     * kasvattaa ympyrää
+     * kasvattaa ympyrää.
      *
      */
     public void kasvata() {
@@ -184,10 +204,6 @@ public class Pallo {
         } else {
             radius = (int) ((int) 30 + (Math.random() * 50));
         }
-        /*else{
-            p.add(new Ellipse2D.Double(x-50, y-50, radius, radius));
-        }*/
-
     }
 
     public int getX() {

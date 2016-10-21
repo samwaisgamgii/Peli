@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import teos.ohjaaja.Ohjaus;
 
 /**
+ * Naytto ja tapahtumankuuntelija.
  *
  * @author Sami
  */
@@ -26,12 +27,15 @@ public class Naytto implements KeyListener {
     private int chooser;
     Ohjaus ohjaus;
 
+    /**
+     * konstruktori.
+     */
     public Naytto() {
 
     }
 
     /**
-     * Metodi kertoo luo ikkunan
+     * Metodi kertoo luo ikkunan.
      *
      * @param vari hardcoded
      *
@@ -55,7 +59,8 @@ public class Naytto implements KeyListener {
     }
 
     /**
-     * luo guin polun määrittelemiseen
+     * luo guin polun määrittelemiseen.
+     *
      * @return polku tiedostoon
      */
     public String polkuGui() {

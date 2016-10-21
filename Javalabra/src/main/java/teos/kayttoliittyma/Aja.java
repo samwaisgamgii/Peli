@@ -10,10 +10,17 @@ import teos.logiikka.VirheetJaSiivous;
 import teos.ohjaaja.Ohjaus;
 
 /**
+ * Ajaa ohjelman.
  *
  * @author Sami
  */
 public class Aja {
+
+    /**
+     * Ajaa ohjelman.
+     *@param args args
+     *
+     */
 
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {

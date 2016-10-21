@@ -6,16 +6,21 @@
 package teos.logiikka;
 
 /**
+ * lopettaa ohjelman.
  *
  * @author Sami
  */
 public class VirheetJaSiivous {
 
+    /**
+     * konstruktori.
+     */
     public VirheetJaSiivous() {
 
     }
+
     /**
-     * Sulkee ohjelman
+     * Sulkee ohjelman.
      *
      */
     public void suljeOhjelma() {
