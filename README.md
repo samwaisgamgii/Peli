@@ -1,6 +1,6 @@
 # Graafinen esitys
 
-Repii datan määritellystä kansiosta ja laittaa sen näytölle heiluu coolisti. Ohjelma myös reagoi käyttäjän toimenpiteisiin graafisesti.
+Repii datan määritellystä kansiosta ja laittaa sen näytölle heiluu coolisti. Ohjelma reagoi käyttäjän toimenpiteisiin graafisesti ja sillä on myös mahdollista pelata/maalata. 
 
 **Dokumentaatio:**
 [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
