@@ -9,4 +9,4 @@ Päivä | Tunnit | Kuvaus
 09.10.2016 | 1h | v,c,s,r,m vaihtaa nyt teemaa. Pilkottu hieman ällöjä metodeita.
 14.10.2016 | 4h | Pelillisyyden asentaminen.
 20.10.2016 | 2h | Valmistelu loppupalautusta varten.
-20.10.2016 | 2h | Valmistelu loppupalautusta varten.
+21.10.2016 | 2h | Valmistelu loppupalautusta varten.
