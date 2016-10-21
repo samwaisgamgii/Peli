@@ -3,7 +3,7 @@
 1. Anna ohjelmalle kansio, jossa '.java' tai/ja '.txt' tyyppiset tiedostosi ovat. Tiedostonvalikko "gui":ssa ei näy kuin kansioita, koska ohjelma hvväksyy vain kansiot. Huomaa, että jos haluat pelata ohjelmalla kannattaa antaa sille kansio, jossa 
 on vähän dataa, muuten ohjelma on hieman hidas, mutta muuten kannattaa antaa paljon dataa, että ohjelma pystyy muodostamaan kokonaisia kuvioita datastasi tai muuten vain on enemmän dataa jolla maalata.
 
-2. Githubin juuressa on tiedosto testiTextia.txt , joka on hyvä määrä jos haluaa pelata ja esim. projektini käyttöliittymä kansiossa on tarpeeksi dataa piirtelyyn.
+2. Githubin juuressa on tiedosto testiTextia.txt , joka on hyvä määrä jos haluaa pelata ja esim. projektini käyttöliittymä kansiossa on tarpeeksi dataa piirtelyyn tai muuten vain kuvioiden muodostamiseen.
 
 2. Default mode eli alku esitys ohjelmassa on näytönsäästäjä, joka kirjoittaa graduaalisesti datasi näytölle. Voit vaihtaa kirjoitus moodia seuraavista napeista:
 * 'c': vaihtaa sinCos aalto moodiin.
