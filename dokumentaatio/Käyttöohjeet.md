@@ -12,3 +12,4 @@ on vähän dataa, muuten ohjelma on hieman hidas, mutta muuten kannattaa antaa p
 * 'm': tuo takaisin default moodin.
 * 'o': luo pelin, jossa pitää väistellä kirjain ryhmiä; jos ryhmään osuu syntyy pieni räjähdys ja syntyy hitaasti etenevä mato, jolla voi piirtää kuvioita.
 * 'r': luo muunnellun snake pelin, jossa pitää syödä poukkoilevia kirjaimia. Mato ei ainoastaa pitene vaan myös muuttaa muotoaan syödessään kirjaimia. Pelissä voi liikkua reunojen yli ja kirjainten vähentyessä tulee "pelaa uudestaan" teksti.
+* 'ESC' lopettaa ohjelman.
